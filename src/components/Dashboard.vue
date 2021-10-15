@@ -30,7 +30,7 @@
                                 {{s.tipo}}
                             </option>
                         </select>
-                        <button class="delete-btn">Cancelar</button>
+                        <button class="delete-btn" @click="deleteBurguer(burguer.id)">Cancelar</button>
                     </div>
 
                 </div>
@@ -59,7 +59,7 @@ methods:{
         const req = await fetch("http://localhost:3000/burguers");
         const data = await req.json();
         this.burguers = data;
-        console.log(this.burguers);  
+          
         //resgatar os status
         this.getStatus();
 
@@ -70,6 +70,18 @@ methods:{
         const data = await req.json();
 
         this.status = data;
+
+        
+    },
+    async deleteBurguer(id){
+        const req = await fetch(`http://localhost:3000/burguers/${id}`,{
+            method: "DELETE",
+        });
+        const resgatar = await req.json();
+
+        //msg
+
+        this.getPedidos();
 
         
     }
