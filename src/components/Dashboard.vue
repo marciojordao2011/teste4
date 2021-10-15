@@ -1,5 +1,6 @@
 <template>
     <div id="burguer-table">
+        <Message :msg="msg" v-show="msg" />
         <div>
             <div id="burguer-table-heading">
                 <div class="order-id">#:</div>
@@ -42,17 +43,22 @@
 </template>
 
 <script>
-
+import Message from './Message.vue';
 
 export default {
+    
     name: "Dashboard",
     data(){
         return{
         burguers: null,
         burguer_id: null,
-        status: []
+        status: [],
+        msg: null,
 
     }
+},
+components:{
+    Message
 },
 methods:{
     async getPedidos(){
@@ -79,7 +85,10 @@ methods:{
         });
         const resgatar = await req.json();
 
-        //msg
+        //colocar uma mensagem no sistema
+               this.msg = `Pedido removido com sucesso!`;
+               //limpa mensagem
+                setTimeout(() => this.msg="", 3000);
 
         this.getPedidos();
 
@@ -95,7 +104,10 @@ methods:{
             body: dataJson
         });
         const res = await req.json();
-        console.log(res);
+         //colocar uma mensagem no sistema
+               this.msg = `Pedido N°${res.id} foi atualizado para ${res.status}!`;
+               //limpa mensagem
+                setTimeout(() => this.msg="", 3000);
     }
 },
 mounted(){

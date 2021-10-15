@@ -80,23 +80,12 @@
   "burguers": [
     {
       "nome": "marcio",
-      "carne": "Alcatra",
-      "pao": "Italiano Branco",
-      "opcionais": [
-        "Bacon",
-        "Salame"
-      ],
-      "status": "Solicitado",
-      "id": 1
-    },
-    {
-      "nome": "marcio",
       "carne": "Maminha",
       "pao": "Parmesão e Orégano",
       "opcionais": [
         "Salame"
       ],
-      "status": "Em produção",
+      "status": "Finalizado",
       "id": 2
     },
     {
